@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-2">
+  <label [for]="inputId()" class="text-base font-semibold text-anybank-ink">
+    {{ label() }}
+  </label>
+  <app-input
+    [inputId]="inputId()"
+    [name]="name() || inputId()"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [(value)]="value"
+  />
+</div>

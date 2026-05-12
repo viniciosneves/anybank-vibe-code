@@ -1,0 +1,60 @@
+<app-auth-card
+  imageSrc="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80"
+  imageAlt="Pessoa sorrindo enquanto usa o celular"
+>
+  <form class="flex flex-col gap-5" (submit)="onSubmit($event)">
+    <div>
+      <h1 class="text-3xl font-bold text-anybank-ink">Cadastro</h1>
+      <p class="mt-2 text-base text-anybank-ink">
+        Preencha os campos abaixo para criar sua conta corrente!
+      </p>
+    </div>
+
+    <app-form-field
+      label="Nome"
+      inputId="nome"
+      placeholder="Digite seu nome completo"
+      [(value)]="nome"
+    />
+
+    <app-form-field
+      label="Email"
+      inputId="email"
+      type="email"
+      placeholder="Digite seu e-mail"
+      [(value)]="email"
+    />
+
+    <app-form-field
+      label="Senha"
+      inputId="senha"
+      type="password"
+      placeholder="Digite sua senha"
+      [(value)]="senha"
+    />
+
+    <label class="flex items-start gap-3 text-sm text-anybank-ink">
+      <app-checkbox inputId="policy" [(checked)]="aceitouPolitica" />
+      <span>Li e estou ciente quanto a Política de Privacidade.</span>
+    </label>
+
+    @if (errorMessage(); as message) {
+      <p
+        role="alert"
+        class="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700 border border-red-200"
+      >
+        {{ message }}
+      </p>
+    }
+
+    <div class="mt-2 flex justify-center">
+      <app-button
+        type="submit"
+        variant="primary"
+        [disabled]="!aceitouPolitica() || loading()"
+      >
+        {{ loading() ? 'Criando conta…' : 'Abrir conta' }}
+      </app-button>
+    </div>
+  </form>
+</app-auth-card>

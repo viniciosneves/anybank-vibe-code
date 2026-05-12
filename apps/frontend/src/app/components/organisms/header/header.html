@@ -1,0 +1,21 @@
+<header class="w-full bg-black px-6 py-4 text-white md:px-10">
+  <div class="mx-auto flex w-full max-w-7xl items-center gap-6 md:gap-10">
+    <app-logo />
+
+    <a
+      href="#"
+      class="hidden text-base text-white transition-colors hover:text-anybank-blue md:inline"
+    >
+      Sobre
+    </a>
+
+    <div class="flex flex-1 justify-center">
+      <app-search-bar [(value)]="search" />
+    </div>
+
+    <div class="flex items-center gap-3">
+      <app-button variant="primary">Abrir conta</app-button>
+      <app-button variant="outline">Login</app-button>
+    </div>
+  </div>
+</header>

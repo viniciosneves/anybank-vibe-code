@@ -1,0 +1,54 @@
+<section
+  class="mx-auto w-full max-w-5xl rounded-3xl bg-gradient-to-br from-anybank-blue-soft to-anybank-card p-6 md:p-12"
+>
+  <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+    <div class="relative">
+      <svg
+        class="absolute -left-2 -top-2 z-10 text-anybank-blue"
+        width="56"
+        height="56"
+        viewBox="0 0 56 56"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M28 0l4.2 16.4L48 12l-9.4 13.6L56 28l-17.4 2.4L48 44l-15.8-4.4L28 56l-4.2-16.4L8 44l9.4-13.6L0 28l17.4-2.4L8 12l15.8 4.4L28 0z"
+        />
+      </svg>
+
+      <div
+        class="relative aspect-square overflow-hidden rounded-3xl border border-anybank-blue/40 bg-anybank-blue-soft"
+      >
+        <img
+          [src]="imageSrc()"
+          [alt]="imageAlt()"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <svg
+          class="absolute right-6 top-10 text-anybank-blue"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M20 0l5 15 15 5-15 5-5 15-5-15L0 20l15-5z" />
+        </svg>
+        <svg
+          class="absolute bottom-10 right-10 text-anybank-blue/80"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M10 0l2.5 7.5L20 10l-7.5 2.5L10 20l-2.5-7.5L0 10l7.5-2.5z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <ng-content />
+    </div>
+  </div>
+</section>
