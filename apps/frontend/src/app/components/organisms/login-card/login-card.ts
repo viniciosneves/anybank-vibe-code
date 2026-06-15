@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Button } from '../../atoms/button/button';
 import { Checkbox } from '../../atoms/checkbox/checkbox';
 import { FormField } from '../../molecules/form-field/form-field';
@@ -13,13 +14,13 @@ import { AuthCard } from '../auth-card/auth-card';
 })
 export class LoginCard {
   private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
 
   protected readonly email = signal('');
   protected readonly senha = signal('');
   protected readonly aceitouPolitica = signal(false);
   protected readonly loading = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
-  protected readonly success = signal(false);
 
   protected onSubmit(event: Event): void {
     event.preventDefault();
@@ -34,7 +35,7 @@ export class LoginCard {
         next: (response) => {
           this.auth.saveSession(response);
           this.loading.set(false);
-          this.success.set(true);
+          this.router.navigateByUrl('/inicio');
         },
         error: (err: { message: string }) => {
           this.errorMessage.set(err.message);

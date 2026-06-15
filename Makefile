@@ -1,7 +1,7 @@
 FRONTEND_DIR := apps/frontend
 BACKEND_DIR  := apps/backend
 
-.PHONY: help install dev dev-frontend dev-backend build build-frontend build-backend test test-frontend test-backend db-up db-down db-logs clean
+.PHONY: help install dev dev-frontend dev-backend build build-frontend build-backend test test-frontend test-backend test-e2e db-up db-down db-logs clean
 
 help:
 	@echo "Anybank — available targets:"
@@ -14,6 +14,7 @@ help:
 	@echo "  make db-logs         Tail Postgres logs"
 	@echo "  make build           Build both apps"
 	@echo "  make test            Run tests for both apps"
+	@echo "  make test-e2e        Run the Playwright login e2e (headed, full stack)"
 	@echo "  make clean           Remove build artifacts and node_modules"
 
 install:
@@ -52,6 +53,12 @@ test-frontend:
 
 test-backend:
 	cd $(BACKEND_DIR) && ./mvnw test
+
+# Brings up Postgres, then Playwright boots the backend + Angular dev server
+# and drives the login flow in a real (headed) browser.
+test-e2e:
+	docker compose up -d --wait postgres
+	cd $(FRONTEND_DIR) && npm run e2e:headed
 
 clean:
 	rm -rf $(FRONTEND_DIR)/node_modules $(FRONTEND_DIR)/dist $(FRONTEND_DIR)/.angular

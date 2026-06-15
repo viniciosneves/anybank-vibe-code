@@ -1,0 +1,10 @@
+<div class="flex flex-col items-center gap-4 py-4">
+  <a
+    [href]="href()"
+    [class]="classes()"
+    [attr.aria-current]="active() ? 'page' : null"
+  >
+    {{ label() }}
+  </a>
+  <span class="h-px w-3/4 bg-anybank-ink/15"></span>
+</div>

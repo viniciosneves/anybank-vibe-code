@@ -29,3 +29,16 @@ export interface ApiError {
   message: string;
   errors?: { field: string; message: string }[];
 }
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface AccessTokenClaims {
+  sub: string;
+  name: string;
+  email: string;
+  exp: number;
+}

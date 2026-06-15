@@ -1,0 +1,26 @@
+<section class="rounded-3xl bg-anybank-card/50 p-8 md:p-10">
+  <h2 class="text-2xl font-bold text-anybank-ink">Nova transação</h2>
+
+  <form class="mt-8 flex max-w-md flex-col gap-6" (submit)="onSubmit($event)">
+    <app-select-field
+      label="Transação"
+      selectId="transaction-type"
+      placeholder="Selecione o tipo de transação"
+      [options]="transactionTypes"
+      [(value)]="type"
+    />
+
+    <app-form-field
+      label="Valor"
+      inputId="transaction-amount"
+      placeholder="R$  00,00"
+      [(value)]="amount"
+    />
+
+    <div class="mt-2">
+      <app-button type="submit" variant="primary" [disabled]="!type() || !amount()">
+        Abrir conta
+      </app-button>
+    </div>
+  </form>
+</section>

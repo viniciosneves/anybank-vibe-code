@@ -1,0 +1,24 @@
+<header class="w-full bg-black px-6 py-4 text-white md:px-10">
+  <div class="mx-auto flex w-full max-w-7xl items-center gap-8">
+    <app-logo />
+
+    <a
+      href="#"
+      class="text-base text-white transition-colors hover:text-anybank-blue"
+    >
+      Sobre
+    </a>
+
+    <div class="ml-auto flex items-center gap-4">
+      <span class="hidden text-base text-white sm:inline">{{ userName() }}</span>
+      <app-avatar [alt]="'Avatar de ' + userName()" />
+      <button
+        type="button"
+        (click)="logout.emit()"
+        class="text-sm text-white/80 underline underline-offset-2 transition-colors hover:text-anybank-blue"
+      >
+        Sair
+      </button>
+    </div>
+  </div>
+</header>
